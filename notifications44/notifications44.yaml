@@ -1,0 +1,31 @@
+--- 
+apiVersion: v1
+kind: Pod
+metadata: 
+  labels: 
+    app: main
+    env: prod
+    owner: AntonZhivnov
+    tier: backend
+  name: contracts223
+spec:
+  volumes: 
+    - name: downloads
+      emptyDir: {}     
+
+  containers: 
+    - 
+      image: zhvant/universalintegrator
+      name: container-downloader
+      volumeMounts: 
+        - 
+          mountPath: /app/downloads
+          name: downloads
+    - 
+      image: zhvant/universalintegrator
+      name: container-unarchiever
+      volumeMounts: 
+        - 
+          mountPath: /app/downloads
+          name: downloads
+
