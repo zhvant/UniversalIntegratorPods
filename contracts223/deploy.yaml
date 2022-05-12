@@ -13,7 +13,10 @@ spec:
     - name: downloads
       emptyDir: {}
     - name: configs
-      emptyDir: {}
+      gitRepo:
+        repository: "https://github.com/zhvant/UniversalIntegratorPods.git"
+        #revision: "22f1d8406d464b0c0874075539c1f2e96c253775"
+      #emptyDir: {}
       #type: Directory
       #hostPath:
       #  path: /home/docker/configs
