@@ -13,9 +13,10 @@ spec:
     - name: downloads
       emptyDir: {}
     - name: configs
-      type: Directory
-      hostPath:
-        path: /home/docker/configs
+      emptyDir: {}
+      #type: Directory
+      #hostPath:
+      #  path: /home/docker/configs
           
   containers: 
     - 
