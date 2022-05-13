@@ -15,10 +15,6 @@ spec:
     - name: configs
       gitRepo:
         repository: "https://github.com/zhvant/UniversalIntegratorPods.git"
-      #emptyDir: {}
-      #type: Directory
-      #hostPath:
-      #  path: /home/docker/configs
           
   containers: 
   
@@ -45,5 +41,6 @@ spec:
         postStart:
           exec:
             command: ["/bin/sh", "-c", "/bin/cp /app/configs/UniversalIntegratorPods/$HOSTNAME/container-archiver/Config.json /app/Config.json"]
+
 
 

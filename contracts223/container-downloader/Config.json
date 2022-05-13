@@ -1,7 +1,7 @@
 {
   "Modules": [
     {
-      "ModuleName": "ContractDownloadModule",
+      "ModuleName": "DownloadModule",
       "ModuleType": "FtpDownloader",
       "Interval": "0/30 * * * * ?",
       "Parameters": {
