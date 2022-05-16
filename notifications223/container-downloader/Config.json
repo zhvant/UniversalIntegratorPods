@@ -11,7 +11,7 @@
         "ftpDownloadFolderIgnoreList": ["archive", "ast", "undefined", "control99docs"],
         "FtpDownloadFolder":  "/out/published/Moskva/purchaseNotice/daily/",
         "ConnectionString": "Data Source=192.168.0.2;Initial Catalog=OOSDocs223;User ID=UnInt;Password=UnInt;Connection Timeout=60;",
-        "DownloadFolder": "./downloads",
+        "DownloadFolder": "/app/downloads",
         "downloadInTheLastDays": 7
       }
     }
