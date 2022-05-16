@@ -3,7 +3,7 @@
     {
       "ModuleName": "DownloaderModule",
       "ModuleType": "FtpDownloader",
-      "Interval": "0 0/10 * * * ?",
+      "Interval": "0 0/5 * * * ?",
       "Parameters": {
         "FtpAddress": "ftp.zakupki.gov.ru",
         "FtpLogin": "fz223free",
