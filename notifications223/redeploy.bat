@@ -1,2 +1,2 @@
-kubectl delete -f %0\deploy.yaml
-kubectl apply -f %0\deploy.yaml
+kubectl delete -f D:\K8s\UniversalIntegratorPods\notifications223\deploy.yaml
+kubectl apply -f D:\K8s\UniversalIntegratorPods\notifications223\deploy.yaml

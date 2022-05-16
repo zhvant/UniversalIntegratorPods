@@ -5,7 +5,7 @@ metadata:
   name: notifications223
   labels: 
     app: main
-    env: prod
+    env: dev
     owner: AntonZhivnov
     tier: backend 
 spec:
