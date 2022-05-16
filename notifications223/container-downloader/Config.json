@@ -3,14 +3,14 @@
     {
       "ModuleName": "DownloaderModule",
       "ModuleType": "FtpDownloader",
-      "Interval": "0 10 19 * * ?",
+      "Interval": "0 0/10 * * * ?",
       "Parameters": {
         "FtpAddress": "ftp.zakupki.gov.ru",
         "FtpLogin": "fz223free",
         "FtpPassword": "fz223free",
         "ftpDownloadFolderIgnoreList": ["archive", "ast", "undefined", "control99docs"],
-        "FtpDownloadFolder":  "/out/published/*/purchaseNotice*/daily/",
-        "ConnectionString": "Data Source=192.168.133.184;Initial Catalog=OOSDocs223;User ID=UnInt;Password=UnInt;Connection Timeout=60;",
+        "FtpDownloadFolder":  "/out/published/Moskva/purchaseNotice/daily/",
+        "ConnectionString": "Data Source=192.168.0.2;Initial Catalog=OOSDocs223;User ID=UnInt;Password=UnInt;Connection Timeout=60;",
         "DownloadFolder": "./downloads",
         "downloadInTheLastDays": 7
       }
