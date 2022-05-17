@@ -13,9 +13,21 @@ spec:
     - name: downloads
       emptyDir: {}
     - name: configs
-      gitRepo:
-        repository: "https://github.com/zhvant/UniversalIntegratorPods.git"
-          
+      emptyDir: {}
+      #gitRepo:
+        #repository: "https://github.com/zhvant/UniversalIntegratorPods.git"
+
+  initContainers:
+    - name: git-cloner
+      image: alpine/git
+      args:
+          - clone
+          - https://github.com/zhvant/UniversalIntegratorPods.git
+          - /app/configs
+      volumeMounts:
+      - mountPath: /app/configs
+        name: configs
+
   containers: 
   
     - image: zhvant/universalintegrator
@@ -25,10 +37,13 @@ spec:
           name: downloads
         - mountPath: /app/configs
           name: configs
-      lifecycle:
-        postStart:
-          exec:
-            command: ["/bin/sh", "-c", "/bin/cp /app/configs/UniversalIntegratorPods/$HOSTNAME/container-downloader/Config.json /app/Config.json"]
+      env:
+        - name: PRESTART_COMMAND
+          value: "/bin/cp /app/configs/$HOSTNAME/container-archiver/Config.json /app/Config.json" 
+      #lifecycle:
+      #  postStart:
+      #    exec:
+      #      command: ["/bin/sh", "-c", "/bin/cp /app/configs/$HOSTNAME/container-downloader/Config.json /app/Config.json"]
 
     - image: zhvant/universalintegrator
       name: container-archiver
@@ -37,10 +52,16 @@ spec:
           name: downloads
         - mountPath: /app/configs
           name: configs
-      lifecycle:
-        postStart:
-          exec:
-            command: ["/bin/sh", "-c", "/bin/cp /app/configs/UniversalIntegratorPods/$HOSTNAME/container-archiver/Config.json /app/Config.json"]
+      env:
+        - name: PRESTART_COMMAND
+          value: "/bin/cp /app/configs/$HOSTNAME/container-archiver/Config.json /app/Config.json"    
+      
+      
+      
+      #lifecycle:
+      #  postStart:
+      #    exec:
+      #      command: ["/bin/sh", "-c", "/bin/cp /app/configs/$HOSTNAME/container-archiver/Config.json /app/Config.json"]
 
 
 
