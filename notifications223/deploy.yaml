@@ -28,8 +28,7 @@ spec:
       - mountPath: /app/configs
         name: configs
 
-  containers: 
-  
+  containers:   
     - image: zhvant/universalintegrator
       name: container-downloader
       volumeMounts: 
@@ -37,13 +36,10 @@ spec:
           name: downloads
         - mountPath: /app/configs
           name: configs
-      env:
-        - name: PRESTART_COMMAND
-          value: "/bin/cp /app/configs/$HOSTNAME/container-archiver/Config.json /app/Config.json" 
-      #lifecycle:
-      #  postStart:
-      #    exec:
-      #      command: ["/bin/sh", "-c", "/bin/cp /app/configs/$HOSTNAME/container-downloader/Config.json /app/Config.json"]
+      lifecycle:
+        postStart:
+          exec:
+            command: ["/bin/sh", "-c", "/bin/cp /app/configs/$HOSTNAME/container-downloader/Config.json /app/Config.json"]
 
     - image: zhvant/universalintegrator
       name: container-archiver
@@ -52,16 +48,10 @@ spec:
           name: downloads
         - mountPath: /app/configs
           name: configs
-      env:
-        - name: PRESTART_COMMAND
-          value: "/bin/cp /app/configs/$HOSTNAME/container-archiver/Config.json /app/Config.json"    
-      
-      
-      
-      #lifecycle:
-      #  postStart:
-      #    exec:
-      #      command: ["/bin/sh", "-c", "/bin/cp /app/configs/$HOSTNAME/container-archiver/Config.json /app/Config.json"]
+      lifecycle:
+        postStart:
+          exec:
+            command: ["/bin/sh", "-c", "/bin/cp /app/configs/$HOSTNAME/container-archiver/Config.json /app/Config.json"]
 
 
 
