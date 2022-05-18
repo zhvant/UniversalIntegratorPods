@@ -10,48 +10,38 @@ metadata:
     tier: backend 
 spec:
   volumes: 
-    - name: downloads
-      emptyDir: {}
     - name: configs
       emptyDir: {}
-      #gitRepo:
-        #repository: "https://github.com/zhvant/UniversalIntegratorPods.git"
+    - name: config
+      emptyDir: {}
 
-  initContainers:
-    - name: git-cloner
-      image: alpine/git
-      args:
-          - clone
-          - https://github.com/zhvant/UniversalIntegratorPods.git
-          - /app/configs
-      volumeMounts:
-      - mountPath: /app/configs
-        name: configs
+  initContainers:    
+   - name: init
+     image: bitnami/git
+     command: ["/bin/sh","-c"
+     ,"git clone 
+     https://github.com/zhvant/UniversalIntegratorPods.git
+     /app/configs 
+     && 
+     cp /app/configs/$POD_NAME/container/Config.json /app/config/Config.json
+     "]
+     volumeMounts:
+     - mountPath: /app/configs
+       name: configs
+     - mountPath: /app/config
+       name: config
+     env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
 
   containers:   
     - image: zhvant/universalintegrator
-      name: container-downloader
+      name: container
       volumeMounts: 
-        - mountPath: /app/downloads
-          name: downloads
-        - mountPath: /app/configs
-          name: configs
-      lifecycle:
-        postStart:
-          exec:
-            command: ["/bin/sh", "-c", "/bin/cp /app/configs/$HOSTNAME/container-downloader/Config.json /app/Config.json"]
-
-    - image: zhvant/universalintegrator
-      name: container-archiver
-      volumeMounts: 
-        - mountPath: /app/downloads
-          name: downloads
-        - mountPath: /app/configs
-          name: configs
-      lifecycle:
-        postStart:
-          exec:
-            command: ["/bin/sh", "-c", "/bin/cp /app/configs/$HOSTNAME/container-archiver/Config.json /app/Config.json"]
+        - mountPath: /app/config
+          name: config
 
 
 

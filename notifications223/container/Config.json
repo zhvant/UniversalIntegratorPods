@@ -12,7 +12,7 @@
         "FtpDownloadFolder":  "/out/published/Moskva/purchaseNotice/daily/",
         "ConnectionString": "Data Source=192.168.133.184;Initial Catalog=OOSDocs223;User ID=UnInt;Password=UnInt;Connection Timeout=60;",
         "DownloadFolder": "/app/downloads",
-        "downloadInTheLastDays": 6
+        "downloadInTheLastDays": 5
       }
     }
 ,
@@ -24,8 +24,6 @@
         "ConnectionString": "Data Source=192.168.133.184;Initial Catalog=OOSDocs223;User ID=UnInt;Password=UnInt;Connection Timeout=60;",
         "FolderFrom": "/app/downloads/",
         "RemoveNamespaces": "true"
-        // (Необязательный) тип файлов
-        //"EntityType": "Contract"
       }
     }
   ]
