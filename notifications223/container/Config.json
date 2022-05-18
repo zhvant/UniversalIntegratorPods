@@ -9,7 +9,7 @@
         "FtpLogin": "fz223free",
         "FtpPassword": "fz223free",
         "ftpDownloadFolderIgnoreList": ["archive", "ast", "undefined", "control99docs"],
-        "FtpDownloadFolder":  "/out/published/*/purchaseNotice/daily/",
+        "FtpDownloadFolder":  "/out/published/*/purchaseNotice*/daily/",
         "ConnectionString": "Data Source=192.168.133.184;Initial Catalog=OOSDocs223;User ID=UnInt;Password=UnInt;Connection Timeout=60;",
         "DownloadFolder": "/app/downloads",
         "downloadInTheLastDays": 3
