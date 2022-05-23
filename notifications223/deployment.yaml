@@ -1,0 +1,54 @@
+--- 
+apiVersion: apps/v1
+kind: Deployment 
+metadata: 
+  name: notifications223
+  labels: 
+    app: universal-integrator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: UniversalIntegrator
+  template:
+    metadata:
+      labels:
+        project: UniversalIntegrator      
+    spec:
+      volumes: 
+        - name: configs
+          emptyDir: {}
+        - name: config
+          emptyDir: {}
+    
+      initContainers:    
+        - name: init
+          image: bitnami/git
+          command: ["/bin/sh","-c"
+          ,"git clone 
+          https://github.com/zhvant/UniversalIntegratorPods.git
+          /app/configs 
+          && 
+          cp /app/configs/notifications223/container/Config.json /app/config/Config.json
+          "]
+          #$SERVICE_NAME
+          volumeMounts:
+          #- mountPath: /app/configs
+          #  name: configs
+          - mountPath: /app/config
+            name: config
+                #valueFrom:
+                #  fieldRef:
+                #    fieldPath: metadata.name
+    
+      containers:   
+        - image: zhvant/universalintegrator
+          name: container
+          volumeMounts: 
+            - mountPath: /app/config
+              name: config
+          env:
+          - name: SRV_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.serviceAccountName
