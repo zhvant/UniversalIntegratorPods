@@ -10,7 +10,7 @@
         "FtpPassword": "fz223free",
         "ftpDownloadFolderIgnoreList": ["archive", "ast", "undefined", "control99docs"],
         "FtpDownloadFolder":  "/out/published/*/purchaseNotice*/daily/",
-        "ConnectionString": "Data Source=172.30.200.103;Initial Catalog=OOSDocs223;User ID=UnInt;Password=UnInt;Connection Timeout=60;",
+        "ConnectionString": "Data Source=172.30.200.103,1433;Initial Catalog=OOSDocs223;User ID=UnInt;Password=UnInt;Connection Timeout=60;",
         "DownloadFolder": "/app/downloads",
         "downloadInTheLastDays": 10
       }
@@ -21,7 +21,7 @@
       "ModuleType": "UnArchiver",
       "Interval": "0/10 * * * * ?",
       "Parameters": {
-        "ConnectionString": "Data Source=172.30.200.103;Initial Catalog=OOSDocs223;User ID=UnInt;Password=UnInt;Connection Timeout=60;",
+        "ConnectionString": "Data Source=172.30.200.103,1433;Initial Catalog=OOSDocs223;User ID=UnInt;Password=UnInt;Connection Timeout=60;",
         "FolderFrom": "/app/downloads/",
         "RemoveNamespaces": "true"
       }
